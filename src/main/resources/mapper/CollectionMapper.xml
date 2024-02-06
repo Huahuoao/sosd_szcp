@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huahuo.szcp.mapper.CollectionMapper">
+
+    <resultMap id="BaseResultMap" type="com.huahuo.szcp.pojo.Collection">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="imageUrl" column="image_url" jdbcType="VARCHAR"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="quantity" column="quantity" jdbcType="INTEGER"/>
+            <result property="category" column="category" jdbcType="VARCHAR"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="owner" column="owner" jdbcType="VARCHAR"/>
+            <result property="blockchainAddress" column="blockchain_address" jdbcType="VARCHAR"/>
+            <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
+            <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,image_url,
+        description,price,quantity,
+        category,creator,owner,
+        blockchain_address,created_at,updated_at
+    </sql>
+</mapper>
