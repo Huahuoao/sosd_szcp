@@ -34,4 +34,11 @@ public class UserController {
         String password = userDto.getPassword();
         return userService.login(phone, password);
     }
+
+    @ApiOperation("更新用户信息")
+    @PostMapping("/update")
+    public Result<Boolean> updateDetail(@RequestBody User user) {
+        userService.updateById(user);
+        return Result.success(true);
+    }
 }

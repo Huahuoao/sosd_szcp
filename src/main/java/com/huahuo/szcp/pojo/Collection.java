@@ -90,6 +90,36 @@ public class Collection implements Serializable {
     @TableField(value = "updated_at")
     private LocalDateTime updatedAt;
 
+    /**
+     * 链上地址
+     */
+    @TableField(value = "chain_address")
+    private String chainAddress;
+
+    /**
+     * 是否上链
+     */
+    @TableField(value = "is_on_chain")
+    private Boolean isOnChain;
+
+    /**
+     *
+     */
+    @TableField(value = "on_chain_time")
+    private LocalDateTime onChainTime;
+
+    /**
+     * 喜欢数
+     */
+    @TableField(value = "like_num")
+    private Integer likeNum;
+
+    /**
+     * 热度
+     */
+    @TableField(value = "hot_value")
+    private Integer hotValue;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -116,7 +146,12 @@ public class Collection implements Serializable {
                 && (this.getOwner() == null ? other.getOwner() == null : this.getOwner().equals(other.getOwner()))
                 && (this.getBlockchainAddress() == null ? other.getBlockchainAddress() == null : this.getBlockchainAddress().equals(other.getBlockchainAddress()))
                 && (this.getCreatedAt() == null ? other.getCreatedAt() == null : this.getCreatedAt().equals(other.getCreatedAt()))
-                && (this.getUpdatedAt() == null ? other.getUpdatedAt() == null : this.getUpdatedAt().equals(other.getUpdatedAt()));
+                && (this.getUpdatedAt() == null ? other.getUpdatedAt() == null : this.getUpdatedAt().equals(other.getUpdatedAt()))
+                && (this.getChainAddress() == null ? other.getChainAddress() == null : this.getChainAddress().equals(other.getChainAddress()))
+                && (this.getIsOnChain() == null ? other.getIsOnChain() == null : this.getIsOnChain().equals(other.getIsOnChain()))
+                && (this.getOnChainTime() == null ? other.getOnChainTime() == null : this.getOnChainTime().equals(other.getOnChainTime()))
+                && (this.getLikeNum() == null ? other.getLikeNum() == null : this.getLikeNum().equals(other.getLikeNum()))
+                && (this.getHotValue() == null ? other.getHotValue() == null : this.getHotValue().equals(other.getHotValue()));
     }
 
     @Override
@@ -135,6 +170,11 @@ public class Collection implements Serializable {
         result = prime * result + ((getBlockchainAddress() == null) ? 0 : getBlockchainAddress().hashCode());
         result = prime * result + ((getCreatedAt() == null) ? 0 : getCreatedAt().hashCode());
         result = prime * result + ((getUpdatedAt() == null) ? 0 : getUpdatedAt().hashCode());
+        result = prime * result + ((getChainAddress() == null) ? 0 : getChainAddress().hashCode());
+        result = prime * result + ((getIsOnChain() == null) ? 0 : getIsOnChain().hashCode());
+        result = prime * result + ((getOnChainTime() == null) ? 0 : getOnChainTime().hashCode());
+        result = prime * result + ((getLikeNum() == null) ? 0 : getLikeNum().hashCode());
+        result = prime * result + ((getHotValue() == null) ? 0 : getHotValue().hashCode());
         return result;
     }
 
@@ -156,6 +196,11 @@ public class Collection implements Serializable {
         sb.append(", blockchainAddress=").append(blockchainAddress);
         sb.append(", createdAt=").append(createdAt);
         sb.append(", updatedAt=").append(updatedAt);
+        sb.append(", chainAddress=").append(chainAddress);
+        sb.append(", isOnChain=").append(isOnChain);
+        sb.append(", onChainTime=").append(onChainTime);
+        sb.append(", likeNum=").append(likeNum);
+        sb.append(", hotValue=").append(hotValue);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

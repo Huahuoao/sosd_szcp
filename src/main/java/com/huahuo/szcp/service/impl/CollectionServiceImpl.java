@@ -75,6 +75,7 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
     @Override
     public Result<Boolean> createCollection(Collection collection) {
         collection.setOwner(collection.getCreator());
+        collection.setIsOnChain(false);
         this.save(collection);
         return Result.success(true);
     }

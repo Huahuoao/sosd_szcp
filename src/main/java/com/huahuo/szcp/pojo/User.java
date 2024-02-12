@@ -4,11 +4,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import lombok.Data;
 
 /**
  * 
@@ -28,8 +27,6 @@ public class User implements Serializable {
      */
     @TableField(value = "phone")
     private String phone;
-    @TableField(value = "balance")
-    private BigDecimal balance;
 
     /**
      * 
@@ -61,6 +58,18 @@ public class User implements Serializable {
     @TableField(value = "signature")
     private String signature;
 
+    /**
+     * 余额
+     */
+    @TableField(value = "balance")
+    private BigDecimal balance;
+
+    /**
+     * 
+     */
+    @TableField(value = "nick_name")
+    private String nickName;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -82,7 +91,9 @@ public class User implements Serializable {
             && (this.getCreatedAt() == null ? other.getCreatedAt() == null : this.getCreatedAt().equals(other.getCreatedAt()))
             && (this.getUpdatedAt() == null ? other.getUpdatedAt() == null : this.getUpdatedAt().equals(other.getUpdatedAt()))
             && (this.getHeadImg() == null ? other.getHeadImg() == null : this.getHeadImg().equals(other.getHeadImg()))
-            && (this.getSignature() == null ? other.getSignature() == null : this.getSignature().equals(other.getSignature()));
+            && (this.getSignature() == null ? other.getSignature() == null : this.getSignature().equals(other.getSignature()))
+            && (this.getBalance() == null ? other.getBalance() == null : this.getBalance().equals(other.getBalance()))
+            && (this.getNickName() == null ? other.getNickName() == null : this.getNickName().equals(other.getNickName()));
     }
 
     @Override
@@ -96,6 +107,8 @@ public class User implements Serializable {
         result = prime * result + ((getUpdatedAt() == null) ? 0 : getUpdatedAt().hashCode());
         result = prime * result + ((getHeadImg() == null) ? 0 : getHeadImg().hashCode());
         result = prime * result + ((getSignature() == null) ? 0 : getSignature().hashCode());
+        result = prime * result + ((getBalance() == null) ? 0 : getBalance().hashCode());
+        result = prime * result + ((getNickName() == null) ? 0 : getNickName().hashCode());
         return result;
     }
 
@@ -112,6 +125,8 @@ public class User implements Serializable {
         sb.append(", updatedAt=").append(updatedAt);
         sb.append(", headImg=").append(headImg);
         sb.append(", signature=").append(signature);
+        sb.append(", balance=").append(balance);
+        sb.append(", nickName=").append(nickName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

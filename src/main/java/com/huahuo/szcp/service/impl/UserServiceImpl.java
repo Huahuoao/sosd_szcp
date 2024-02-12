@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 /**
  * @author Administrator
@@ -21,6 +22,20 @@ import java.time.LocalDateTime;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         implements UserService {
+    public static String generateRandomString(int length) {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder sb = new StringBuilder();
+
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            char randomChar = characters.charAt(index);
+            sb.append(randomChar);
+        }
+
+        return sb.toString();
+    }
+
     @Autowired
     private UserMapper userMapper;
 
@@ -30,6 +45,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         String encodedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = new User();
         user.setPhone(phone);
+        user.setNickName("默认昵称" + generateRandomString(5));
         user.setPassword(encodedPassword);
         user.setCreatedAt(LocalDateTime.now());
         user.setUpdatedAt(LocalDateTime.now());
