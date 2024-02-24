@@ -74,6 +74,7 @@ public class CommentsServiceImpl extends ServiceImpl<CommentsMapper, Comments>
         comment.setCreatedAt(now);
         comment.setUpdatedAt(now);
         comment.setCollectionId(collectionId);
+
         return this.save(comment);
     }
 }

@@ -5,3 +5,28 @@ spring:
     multipart:
       max-request-size: 50MB
       max-file-size: 50MB
+  redis:
+    host: 43.139.142.207
+    # 端口，默认为6379
+    port: 6379
+    # 数据库索引
+    database: 2
+    # 密码(如没有密码请注释掉)
+    password: 20040816Ywj
+    username: default
+    # 连接超时时间
+    timeout: 10s
+async:
+  executor:
+    thread:
+      core_pool_size: 8
+      max_pool_size: 8
+      queue_capacity: 16
+      name:
+        prefix: async_service-
+netty:
+  server:
+      port: 8088
+  client:
+      port: 9090
+      host: localhost

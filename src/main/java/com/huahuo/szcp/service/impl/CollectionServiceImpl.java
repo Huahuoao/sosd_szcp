@@ -6,15 +6,18 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huahuo.szcp.common.PageResult;
 import com.huahuo.szcp.common.Result;
+import com.huahuo.szcp.dto.CreateCollectionDto;
 import com.huahuo.szcp.mapper.CollectionFavoriteMapper;
 import com.huahuo.szcp.mapper.CollectionMapper;
 import com.huahuo.szcp.pojo.Collection;
 import com.huahuo.szcp.pojo.CollectionFavorite;
 import com.huahuo.szcp.service.CollectionService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Administrator
@@ -73,9 +76,14 @@ public class CollectionServiceImpl extends ServiceImpl<CollectionMapper, Collect
     }
 
     @Override
-    public Result<Boolean> createCollection(Collection collection) {
+    public Result<Boolean> createCollection(CreateCollectionDto dto) {
+        Collection collection = new Collection();
+        BeanUtils.copyProperties(dto, collection);
         collection.setOwner(collection.getCreator());
         collection.setIsOnChain(false);
+        collection.setIsAi(dto.getIsAi());
+        Random random = new Random();
+        collection.setHotValue(random.nextInt(20));
         this.save(collection);
         return Result.success(true);
     }

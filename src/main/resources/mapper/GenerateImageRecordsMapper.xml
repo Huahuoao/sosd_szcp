@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huahuo.szcp.mapper.GenerateImageRecordsMapper">
+
+    <resultMap id="BaseResultMap" type="com.huahuo.szcp.pojo.GenerateImageRecords">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="target" column="target" jdbcType="VARCHAR"/>
+            <result property="createAt" column="create_at" jdbcType="VARCHAR"/>
+            <result property="updateUp" column="update_up" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,url,target,
+        create_at,update_up
+    </sql>
+</mapper>

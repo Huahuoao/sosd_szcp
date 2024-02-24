@@ -2,6 +2,7 @@ package com.huahuo.szcp.service;
 
 import com.huahuo.szcp.common.PageResult;
 import com.huahuo.szcp.common.Result;
+import com.huahuo.szcp.dto.CreateCollectionDto;
 import com.huahuo.szcp.pojo.Collection;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public interface CollectionService extends IService<Collection> {
 
     Result<Boolean> toggleCollection(Integer collectionId, Integer collectorId);
 
-    public Result<Boolean> createCollection(@RequestBody Collection collection);
+    public Result<Boolean> createCollection(@RequestBody CreateCollectionDto dto);
 
     public PageResult<List<Collection>> getCollectionByOwner(Integer userId, Integer page, Integer size);
     public PageResult<List<Collection>> getCollectionAll(Integer page, Integer size);

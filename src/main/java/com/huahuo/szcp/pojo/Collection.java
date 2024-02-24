@@ -120,6 +120,18 @@ public class Collection implements Serializable {
     @TableField(value = "hot_value")
     private Integer hotValue;
 
+    /**
+     *
+     */
+    @TableField(value = "comments_num")
+    private Integer commentsNum;
+
+    /**
+     *
+     */
+    @TableField(value = "is_ai")
+    private Boolean isAi;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
@@ -151,7 +163,9 @@ public class Collection implements Serializable {
                 && (this.getIsOnChain() == null ? other.getIsOnChain() == null : this.getIsOnChain().equals(other.getIsOnChain()))
                 && (this.getOnChainTime() == null ? other.getOnChainTime() == null : this.getOnChainTime().equals(other.getOnChainTime()))
                 && (this.getLikeNum() == null ? other.getLikeNum() == null : this.getLikeNum().equals(other.getLikeNum()))
-                && (this.getHotValue() == null ? other.getHotValue() == null : this.getHotValue().equals(other.getHotValue()));
+                && (this.getHotValue() == null ? other.getHotValue() == null : this.getHotValue().equals(other.getHotValue()))
+                && (this.getCommentsNum() == null ? other.getCommentsNum() == null : this.getCommentsNum().equals(other.getCommentsNum()))
+                && (this.getIsAi() == null ? other.getIsAi() == null : this.getIsAi().equals(other.getIsAi()));
     }
 
     @Override
@@ -175,6 +189,8 @@ public class Collection implements Serializable {
         result = prime * result + ((getOnChainTime() == null) ? 0 : getOnChainTime().hashCode());
         result = prime * result + ((getLikeNum() == null) ? 0 : getLikeNum().hashCode());
         result = prime * result + ((getHotValue() == null) ? 0 : getHotValue().hashCode());
+        result = prime * result + ((getCommentsNum() == null) ? 0 : getCommentsNum().hashCode());
+        result = prime * result + ((getIsAi() == null) ? 0 : getIsAi().hashCode());
         return result;
     }
 
@@ -201,6 +217,8 @@ public class Collection implements Serializable {
         sb.append(", onChainTime=").append(onChainTime);
         sb.append(", likeNum=").append(likeNum);
         sb.append(", hotValue=").append(hotValue);
+        sb.append(", commentsNum=").append(commentsNum);
+        sb.append(", isAi=").append(isAi);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

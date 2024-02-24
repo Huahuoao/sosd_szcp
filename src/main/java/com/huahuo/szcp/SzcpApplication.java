@@ -10,5 +10,4 @@ public class SzcpApplication {
     public static void main(String[] args) {
         SpringApplication.run(SzcpApplication.class, args);
     }
-
 }

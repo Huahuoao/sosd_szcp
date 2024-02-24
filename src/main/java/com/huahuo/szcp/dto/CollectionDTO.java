@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class CollectionDTO {
     private Integer collectionId;
-    private Integer collectorId;
+    private Integer userId;
 
 
 }

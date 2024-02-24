@@ -3,6 +3,9 @@ package com.huahuo.szcp.utils;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import com.huahuo.szcp.service.GenerateImageRecordsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,14 +14,16 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class BaiduStableDiffusionUtils {
+@Service
 
+public class BaiduStableDiffusionUtils {
 
     private static final String apiKey = "PI79nMwZdYICRKMVBUnfs0Wl";
     private static final String secretKey = "hsAU8mZnlVnvF6sHT0UsxoKXB4d6OG9K";
+    @Autowired
+    GenerateImageRecordsService generateImageRecordsService;
 
-
-    public static String getAccessToken() {
+    public String getAccessToken() {
         String accessToken = null;
         try {
             String url = "https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=" + apiKey + "&client_secret=" + secretKey;
@@ -41,7 +46,7 @@ public class BaiduStableDiffusionUtils {
         return accessToken;
     }
 
-    public static String callStableDiffusionXL(String prompt, String negativePrompt) {
+    public String callStableDiffusionXL(String prompt, String negativePrompt) {
         try {
             String accessToken = getAccessToken();
             String url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/text2image/sd_xl?access_token=" + accessToken;
@@ -69,7 +74,9 @@ public class BaiduStableDiffusionUtils {
             JSONArray dataArray = jsonObject.getJSONArray("data");
             JSONObject imageData = dataArray.getJSONObject(0);
             String base64Image = imageData.getString("b64_image");
-            return QiniuImageUtils.upload(base64Image);
+            String upload = QiniuImageUtils.upload(base64Image);
+            generateImageRecordsService.saveRecord(prompt, upload);
+            return upload;
         } catch (NullPointerException | IOException e) {
             e.printStackTrace();
             return "error";

@@ -12,17 +12,25 @@
             <result property="price" column="price" jdbcType="DECIMAL"/>
             <result property="quantity" column="quantity" jdbcType="INTEGER"/>
             <result property="category" column="category" jdbcType="VARCHAR"/>
-            <result property="creator" column="creator" jdbcType="VARCHAR"/>
-            <result property="owner" column="owner" jdbcType="VARCHAR"/>
+            <result property="creator" column="creator" jdbcType="INTEGER"/>
+            <result property="owner" column="owner" jdbcType="INTEGER"/>
             <result property="blockchainAddress" column="blockchain_address" jdbcType="VARCHAR"/>
             <result property="createdAt" column="created_at" jdbcType="TIMESTAMP"/>
             <result property="updatedAt" column="updated_at" jdbcType="TIMESTAMP"/>
+            <result property="isOnChain" column="is_on_chain" jdbcType="TINYINT"/>
+            <result property="onChainTime" column="on_chain_time" jdbcType="TIMESTAMP"/>
+            <result property="likeNum" column="like_num" jdbcType="INTEGER"/>
+            <result property="hotValue" column="hot_value" jdbcType="INTEGER"/>
+            <result property="commentsNum" column="comments_num" jdbcType="INTEGER"/>
+            <result property="isAi" column="is_ai" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,name,image_url,
         description,price,quantity,
         category,creator,owner,
-        blockchain_address,created_at,updated_at
+        blockchain_address,created_at,updated_at,
+        is_on_chain,on_chain_time,like_num,
+        hot_value,comments_num,is_ai
     </sql>
 </mapper>
